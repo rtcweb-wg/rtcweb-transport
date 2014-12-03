@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-06"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-07"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="11" month="August" year="2014"/>
+    <date day="2" month="December" year="2014"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -108,7 +108,7 @@
         connectivity to the peer or its TURN server, candidates of the
         appropriate types MUST be supported. The "Happy Eyeballs"
         specification for ICE <xref
-        target="I-D.reddy-mmusic-ice-happy-eyeballs"/> SHOULD be
+        target="I-D.martinsen-mmusic-ice-dualstack-fairness"/> SHOULD be
         supported.</t>
       </section>
 
@@ -190,12 +190,6 @@
         target="RFC5389"/> (STUN) section 11 (300 Try Alternate) MUST be
         supported.</t>
 
-        <t>Further discussion of the interaction of WebRTC with firewalls is
-        contained in <xref
-        target="I-D.hutton-rtcweb-nat-firewall-considerations"/>. This
-        document makes no requirements on interacting with HTTP proxies or
-        HTTP proxy configuration methods.</t>
-
         <t>The WebRTC implementation MAY support accessing the Internet
         through an HTTP proxy. If it does so, it MUST support the "connect"
         header as specified in <xref
@@ -218,7 +212,7 @@
         <xref target="I-D.ietf-tsvwg-sctp-ndata"/>, MUST be supported.</t>
 
         <t>The setup protocol for WebRTC data channels is described in <xref
-        target="I-D.jesup-rtcweb-data-protocol"/>.</t>
+        target="I-D.ietf-rtcweb-data-protocol"/>.</t>
 
         <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
         over the same port pair, as described in the DTLS_SRTP specification
@@ -226,8 +220,7 @@
         protocol payloads over this DTLS connection are SCTP packets.</t>
 
         <t>Protocol identification MUST be supplied as part of the DTLS
-        handshake, as specified in <xref
-        target="I-D.thomson-rtcweb-alpn"/>.</t>
+        handshake, as specified in <xref target="I-D.ietf-rtcweb-alpn"/>.</t>
       </section>
     </section>
 
@@ -429,11 +422,11 @@
 
       <?rfc include='reference.I-D.ietf-tsvwg-sctp-ndata'?>
 
-      <?rfc include='reference.I-D.reddy-mmusic-ice-happy-eyeballs'?>
+      <?rfc include='reference.I-D.martinsen-mmusic-ice-dualstack-fairness'?>
 
       <?rfc include='reference.I-D.hutton-httpbis-connect-protocol'?>
 
-      <?rfc include='reference.I-D.thomson-rtcweb-alpn'?>
+      <?rfc include='reference.I-D.ietf-rtcweb-alpn'?>
     </references>
 
     <references title="Informative References">
@@ -445,9 +438,7 @@
 
       <?rfc include='reference.I-D.ietf-rtcweb-overview'?>
 
-      <?rfc include='reference.I-D.jesup-rtcweb-data-protocol'?>
-
-      <?rfc include='reference.I-D.hutton-rtcweb-nat-firewall-considerations'?>
+      <?rfc include='reference.I-D.ietf-rtcweb-data-protocol'?>
 
       <?rfc include='reference.I-D.ietf-dart-dscp-rtp'?>
     </references>
@@ -561,6 +552,15 @@
 
             <t>Said explicitly that SCTP for data channels has a single DSCP
             codepoint</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -06 to -07">
+        <t><list style="symbols">
+            <t>Updated references</t>
+
+            <t>Removed reference to
+            draft-hutton-rtcweb-nat-firewall-considerations</t>
           </list></t>
       </section>
     </section>
