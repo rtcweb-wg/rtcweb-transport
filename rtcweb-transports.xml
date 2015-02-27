@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-07"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-08"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="2" month="December" year="2014"/>
+    <date day="27" month="February" year="2015"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -193,7 +193,7 @@
         <t>The WebRTC implementation MAY support accessing the Internet
         through an HTTP proxy. If it does so, it MUST support the "connect"
         header as specified in <xref
-        target="I-D.hutton-httpbis-connect-protocol"/>.</t>
+        target="I-D.ietf-httpbis-tunnel-protocol"/>.</t>
       </section>
 
       <section title="Transport protocols implemented">
@@ -295,10 +295,9 @@
 
             <t>send each media stream on its own 5-tuple and data on its own
             5-tuple (fully unbundled)</t>
-
-            <t>bundle each media type (audio, video or data) into its own
-            5-tuple (bundling by media type)</t>
-          </list>It MAY choose to support other configurations.</t>
+          </list>It MAY choose to support other configurations, such as
+        bundling each media type (audio, video or data) into its own 5-tuple
+        (bundling by media type).</t>
 
         <t>Sending data over multiple 5-tuples is not supported.</t>
 
@@ -406,6 +405,8 @@
 
       <?rfc include='reference.RFC.6724'?>
 
+      <?rfc include='reference.I-D.ietf-httpbis-tunnel-protocol'?>
+
       <?rfc include='reference.I-D.ietf-rtcweb-security'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-rtp-usage'?>
@@ -423,8 +424,6 @@
       <?rfc include='reference.I-D.ietf-tsvwg-sctp-ndata'?>
 
       <?rfc include='reference.I-D.martinsen-mmusic-ice-dualstack-fairness'?>
-
-      <?rfc include='reference.I-D.hutton-httpbis-connect-protocol'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-alpn'?>
     </references>
@@ -561,6 +560,17 @@
 
             <t>Removed reference to
             draft-hutton-rtcweb-nat-firewall-considerations</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -07 to -08">
+        <t><list style="symbols">
+            <t>Updated references</t>
+
+            <t>Deleted "bundle each media type (audio, video or data) into its
+            own 5-tuple (bundling by media type)" from MUST support
+            configuration, since JSEP does not have a means to negotiate this
+            configuration</t>
           </list></t>
       </section>
     </section>
