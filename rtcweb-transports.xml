@@ -39,7 +39,8 @@
 
       <t>WebRTC is described in the WebRTC overview document, <xref
       target="I-D.ietf-rtcweb-overview"/>, which also defines terminology used
-      in this document.</t>
+      in this document, including the terms "WebRTC device" and "WebRTC
+      browser".</t>
 
       <t>This document focuses on the data transport protocols that are used
       by conforming implementations, including the protocols used for
@@ -53,7 +54,7 @@
 
       <t>This document describes requirements that apply to all WebRTC
       devices. When there are requirements that apply only to WebRTC browsers,
-      this is called out by using the word "browser".</t>
+      this is called out explicitly.</t>
     </section>
 
     <section title="Requirements language">
@@ -211,11 +212,11 @@
         target="I-D.ietf-mmusic-sctp-sdp"/>. The SCTP extension for NDATA,
         <xref target="I-D.ietf-tsvwg-sctp-ndata"/>, MUST be supported.</t>
 
-        <t>The setup protocol for WebRTC data channels is described in <xref
-        target="I-D.ietf-rtcweb-data-protocol"/>.</t>
+        <t>The setup protocol for WebRTC data channels described in <xref
+        target="I-D.ietf-rtcweb-data-protocol"/> MUST be supported.</t>
 
         <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
-        over the same port pair, as described in the DTLS_SRTP specification
+        over the same port pair, as described in the DTLS-SRTP specification
         <xref target="RFC5764"/>, section 5.1.2. All application layer
         protocol payloads over this DTLS connection are SCTP packets.</t>
 
@@ -249,9 +250,10 @@
         symptoms of unexpected behaviour like priority inversion or blocking
         of packets with certain DSCP markings. The detection of these
         conditions is implementation dependent. (Question: Does there need to
-        be an API knob to turn off DSCP markings?)</t>
+        be an API knob to turn off DSCP markings? If nobody argues for it,
+        this parenthesis will be removed.)</t>
 
-        <t>All packets arrying data from the SCTP association supporting the
+        <t>All packets carrying data from the SCTP association supporting the
         data channels MUST use a single DSCP code point.</t>
 
         <t>All packets on one TCP connection, no matter what it carries, MUST
