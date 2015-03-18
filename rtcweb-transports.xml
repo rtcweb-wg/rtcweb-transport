@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-08"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-09"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="27" month="February" year="2015"/>
+    <date day="18" month="March" year="2015"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -213,6 +213,13 @@
 
         <t>The setup protocol for WebRTC data channels is described in <xref
         target="I-D.ietf-rtcweb-data-protocol"/>.</t>
+
+        <t>Note: DTLS-SRTP as defined in <xref target="RFC5764"/> defines
+        protection of data carried over a single UDP source and destination
+        port pair (RFC 5764 section 3). In the context of using ICE, the term
+        "single UDP source and destination port pair" needs to be understood
+        as "a single ICE component", as defined in <xref target="RFC5245"/>.
+        This note may be included in a future version of DTLS-SRTP or ICE.</t>
 
         <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
         over the same port pair, as described in the DTLS_SRTP specification
