@@ -74,11 +74,11 @@
         protocols:</t>
 
         <t><list style="symbols">
-            <t>UDP. This is the protocol assumed by most protocol elements
-            described.</t>
+            <t>UDP <xref target="RFC0768"/>. This is the protocol assumed by
+            most protocol elements described.</t>
 
-            <t>TCP. This is used for HTTP/WebSockets, as well as for TURN/SSL
-            and ICE-TCP.</t>
+            <t>TCP <xref target="RFC0793"/>. This is used for HTTP/WebSockets,
+            as well as for TURN/SSL and ICE-TCP.</t>
           </list></t>
 
         <t>For both protocols, IPv4 and IPv6 support is assumed.</t>
@@ -126,8 +126,9 @@
         <t>When a client gathers all IPv6 addresses on a host, and both
         temporary addresses and permanent addresses of the same scope are
         present, the client SHOULD discard the permanent addresses before
-        forming pairs. This is consistent with the default policy described in
-        <xref target="RFC6724"/>.</t>
+        exposing addresses to the application or using them in ICE. This is
+        consistent with the default policy described in <xref
+        target="RFC6724"/>.</t>
       </section>
 
       <section anchor="s-middlebox" title="Middle box related functions">
@@ -387,6 +388,10 @@
     <references title="Normative References">
       <?rfc include='reference.RFC.2119'?>
 
+      <?rfc include='reference.RFC.0768'?>
+
+      <?rfc include='reference.RFC.0793'?>
+
       <?rfc include='reference.RFC.4571'?>
 
       <?rfc include='reference.RFC.4941'?>
@@ -415,6 +420,8 @@
 
       <?rfc include='reference.I-D.ietf-rtcweb-data-channel'?>
 
+      <?rfc include='reference.I-D.ietf-rtcweb-data-protocol'?>
+
       <?rfc include='reference.I-D.ietf-rtcweb-security-arch'?>
 
       <?rfc include='reference.I-D.ietf-tsvwg-rtcweb-qos'?>
@@ -438,8 +445,6 @@
       <?rfc include='reference.RFC.3484'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-overview'?>
-
-      <?rfc include='reference.I-D.ietf-rtcweb-data-protocol'?>
 
       <?rfc include='reference.I-D.ietf-dart-dscp-rtp'?>
     </references>
