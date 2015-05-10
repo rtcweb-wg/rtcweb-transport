@@ -251,7 +251,7 @@
         conditions is implementation dependent. (Question: Does there need to
         be an API knob to turn off DSCP markings?)</t>
 
-        <t>All packets arrying data from the SCTP association supporting the
+        <t>All packets carrying data from the SCTP association supporting the
         data channels MUST use a single DSCP code point.</t>
 
         <t>All packets on one TCP connection, no matter what it carries, MUST
