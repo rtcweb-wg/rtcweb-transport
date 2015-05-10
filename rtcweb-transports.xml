@@ -39,7 +39,8 @@
 
       <t>WebRTC is described in the WebRTC overview document, <xref
       target="I-D.ietf-rtcweb-overview"/>, which also defines terminology used
-      in this document.</t>
+      in this document, including the terms "WebRTC device" and "WebRTC
+      browser".</t>
 
       <t>This document focuses on the data transport protocols that are used
       by conforming implementations, including the protocols used for
@@ -53,7 +54,7 @@
 
       <t>This document describes requirements that apply to all WebRTC
       devices. When there are requirements that apply only to WebRTC browsers,
-      this is called out by using the word "browser".</t>
+      this is called out explicitly.</t>
     </section>
 
     <section title="Requirements language">
@@ -73,11 +74,11 @@
         protocols:</t>
 
         <t><list style="symbols">
-            <t>UDP. This is the protocol assumed by most protocol elements
-            described.</t>
+            <t>UDP <xref target="RFC0768"/>. This is the protocol assumed by
+            most protocol elements described.</t>
 
-            <t>TCP. This is used for HTTP/WebSockets, as well as for TURN/SSL
-            and ICE-TCP.</t>
+            <t>TCP <xref target="RFC0793"/>. This is used for HTTP/WebSockets,
+            as well as for TURN/SSL and ICE-TCP.</t>
           </list></t>
 
         <t>For both protocols, IPv4 and IPv6 support is assumed.</t>
@@ -125,8 +126,9 @@
         <t>When a client gathers all IPv6 addresses on a host, and both
         temporary addresses and permanent addresses of the same scope are
         present, the client SHOULD discard the permanent addresses before
-        forming pairs. This is consistent with the default policy described in
-        <xref target="RFC6724"/>.</t>
+        exposing addresses to the application or using them in ICE. This is
+        consistent with the default policy described in <xref
+        target="RFC6724"/>.</t>
       </section>
 
       <section anchor="s-middlebox" title="Middle box related functions">
@@ -211,11 +213,11 @@
         target="I-D.ietf-mmusic-sctp-sdp"/>. The SCTP extension for NDATA,
         <xref target="I-D.ietf-tsvwg-sctp-ndata"/>, MUST be supported.</t>
 
-        <t>The setup protocol for WebRTC data channels is described in <xref
-        target="I-D.ietf-rtcweb-data-protocol"/>.</t>
+        <t>The setup protocol for WebRTC data channels described in <xref
+        target="I-D.ietf-rtcweb-data-protocol"/> MUST be supported.</t>
 
         <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
-        over the same port pair, as described in the DTLS_SRTP specification
+        over the same port pair, as described in the DTLS-SRTP specification
         <xref target="RFC5764"/>, section 5.1.2. All application layer
         protocol payloads over this DTLS connection are SCTP packets.</t>
 
@@ -249,7 +251,8 @@
         symptoms of unexpected behaviour like priority inversion or blocking
         of packets with certain DSCP markings. The detection of these
         conditions is implementation dependent. (Question: Does there need to
-        be an API knob to turn off DSCP markings?)</t>
+        be an API knob to turn off DSCP markings? If nobody argues for it,
+        this parenthesis will be removed.)</t>
 
         <t>All packets carrying data from the SCTP association supporting the
         data channels MUST use a single DSCP code point.</t>
@@ -385,6 +388,10 @@
     <references title="Normative References">
       <?rfc include='reference.RFC.2119'?>
 
+      <?rfc include='reference.RFC.0768'?>
+
+      <?rfc include='reference.RFC.0793'?>
+
       <?rfc include='reference.RFC.4571'?>
 
       <?rfc include='reference.RFC.4941'?>
@@ -413,6 +420,8 @@
 
       <?rfc include='reference.I-D.ietf-rtcweb-data-channel'?>
 
+      <?rfc include='reference.I-D.ietf-rtcweb-data-protocol'?>
+
       <?rfc include='reference.I-D.ietf-rtcweb-security-arch'?>
 
       <?rfc include='reference.I-D.ietf-tsvwg-rtcweb-qos'?>
@@ -436,8 +445,6 @@
       <?rfc include='reference.RFC.3484'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-overview'?>
-
-      <?rfc include='reference.I-D.ietf-rtcweb-data-protocol'?>
 
       <?rfc include='reference.I-D.ietf-dart-dscp-rtp'?>
     </references>
