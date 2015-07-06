@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-08"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-09"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="27" month="February" year="2015"/>
+    <date day="6" month="July" year="2015"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -215,6 +215,13 @@
 
         <t>The setup protocol for WebRTC data channels described in <xref
         target="I-D.ietf-rtcweb-data-protocol"/> MUST be supported.</t>
+
+        <t>Note: DTLS-SRTP as defined in <xref target="RFC5764"/> section
+        6.7.1 defines the interaction between DTLS and ICE ( <xref
+        target="RFC5245"/>). The effect of this specification is that all ICE
+        candidate pairs associated with a single component are part of the
+        same DTLS association. Thus, there will only be one DTLS handshake
+        even if there are multiple valid candidate pairs.</t>
 
         <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
         over the same port pair, as described in the DTLS-SRTP specification
@@ -578,6 +585,13 @@
             own 5-tuple (bundling by media type)" from MUST support
             configuration, since JSEP does not have a means to negotiate this
             configuration</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -08 to -09">
+        <t><list style="symbols">
+            <t>Added a clarifying note about DTLS-SRTP and ICE
+            interaction.</t>
           </list></t>
       </section>
     </section>
