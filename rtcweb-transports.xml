@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="18" month="March" year="2015"/>
+    <date day="6" month="July" year="2015"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -214,12 +214,12 @@
         <t>The setup protocol for WebRTC data channels is described in <xref
         target="I-D.ietf-rtcweb-data-protocol"/>.</t>
 
-        <t>Note: DTLS-SRTP as defined in <xref target="RFC5764"/> defines
-        protection of data carried over a single UDP source and destination
-        port pair (RFC 5764 section 3). In the context of using ICE, the term
-        "single UDP source and destination port pair" needs to be understood
-        as "a single ICE component", as defined in <xref target="RFC5245"/>.
-        This note may be included in a future version of DTLS-SRTP or ICE.</t>
+        <t>Note: DTLS-SRTP as defined in <xref target="RFC5764"/> section
+        6.7.1 defines the interaction between DTLS and ICE ( <xref
+        target="RFC5245"/>). The effect of this specification is that all ICE
+        candidate pairs associated with a single component are part of the
+        same DTLS association. Thus, there will only be one DTLS handshake
+        even if there are multiple valid candidate pairs.</t>
 
         <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
         over the same port pair, as described in the DTLS_SRTP specification
@@ -578,6 +578,13 @@
             own 5-tuple (bundling by media type)" from MUST support
             configuration, since JSEP does not have a means to negotiate this
             configuration</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -08 to -09">
+        <t><list style="symbols">
+            <t>Added a clarifying note about DTLS-SRTP and ICE
+            interaction.</t>
           </list></t>
       </section>
     </section>
