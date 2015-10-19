@@ -195,7 +195,9 @@
         <t>The WebRTC implementation MAY support accessing the Internet
         through an HTTP proxy. If it does so, it MUST support the "connect"
         header as specified in <xref
-        target="I-D.ietf-httpbis-tunnel-protocol"/>.</t>
+        target="I-D.ietf-httpbis-tunnel-protocol"/>, and proxy authentication
+        as described in Section 4.3.6 of <xref target="RFC7231"/> and <xref
+        target="RFC7235"/> MUST also be supported. </t>
       </section>
 
       <section title="Transport protocols implemented">
@@ -418,6 +420,10 @@
       <?rfc include='reference.RFC.6544'?>
 
       <?rfc include='reference.RFC.6724'?>
+
+      <?rfc include='reference.RFC.7231'?>
+
+      <?rfc include='reference.RFC.7235'?>
 
       <?rfc include='reference.I-D.ietf-httpbis-tunnel-protocol'?>
 
