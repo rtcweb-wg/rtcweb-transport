@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="27" month="January" year="2015"/>
+    <date day="28" month="January" year="2015"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -244,16 +244,19 @@
       controlled from the API.</t>
 
       <t>In this context, a "flow" is used for the units that are given a
-      specific priority through the WebRTC API. For media, a "flow" is what
-      <xref target="RFC7656"/> calls a "media source", which results in a
-      "source RTP stream" and one or more "redundancy RTP streams". This
-      specification does not describe prioritization between the RTP streams
-      that come from a single "media source".</t>
+      specific priority through the WebRTC API.</t>
 
-      <t>For data, a "flow" is the outgoing data on a single DataChannel.</t>
+      <t>For media, a "media flow", which can be an "audio flow" or a "video
+      flow", is what <xref target="RFC7656"/> calls a "media source", which
+      results in a "source RTP stream" and one or more "redundancy RTP
+      streams". This specification does not describe prioritization between
+      the RTP streams that come from a single "media source".</t>
 
-      <t>The priority associated with a media or data flow is classified as
-      "very-low", "low", "medium or "high". There are only four priority
+      <t>A "data flow" is the outgoing data on a single WebRTC data
+      channel.</t>
+
+      <t>The priority associated with a media flow or data flow is classified
+      as "very-low", "low", "medium or "high". There are only four priority
       levels at the API.</t>
 
       <t>The priority settings affect two pieces of behavior: Packet send
