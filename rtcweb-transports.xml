@@ -193,9 +193,9 @@
         supported.</t>
 
         <t>The WebRTC implementation MAY support accessing the Internet
-        through an HTTP proxy. If it does so, it MUST support the "connect"
+        through an HTTP proxy. If it does so, it MUST include the "ALPN"
         header as specified in <xref
-        target="I-D.ietf-httpbis-tunnel-protocol"/>.</t>
+        target="RFC7639"/>.</t>
       </section>
 
       <section title="Transport protocols implemented">
@@ -419,7 +419,7 @@
 
       <?rfc include='reference.RFC.6724'?>
 
-      <?rfc include='reference.I-D.ietf-httpbis-tunnel-protocol'?>
+      <?rfc include='reference.RFC.7639'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-security'?>
 
