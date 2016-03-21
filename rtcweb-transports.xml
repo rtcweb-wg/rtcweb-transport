@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-11"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-12"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="28" month="January" year="2016"/>
+    <date day="21" month="March" year="2016"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -132,6 +132,9 @@
         exposing addresses to the application or using them in ICE. This is
         consistent with the default policy described in <xref
         target="RFC6724"/>.</t>
+
+        <t>If some of the temporary IPv6 addresses, but not all, are marked
+        deprecated, the client SHOULD discard the deprecated addresses.</t>
       </section>
 
       <section anchor="s-middlebox" title="Middle box related functions">
@@ -349,7 +352,7 @@
         use a single DSCP code point.</t>
 
         <t>More advice on the use of DSCP code points with RTP is given in
-        <xref target="I-D.ietf-dart-dscp-rtp"/>.</t>
+        <xref target="RFC7657"/>.</t>
 
         <t>There exist a number of schemes for achieving quality of service
         that do not depend solely on DSCP code points. Some of these schemes
@@ -486,9 +489,11 @@
 
       <?rfc include='reference.RFC.7656'?>
 
+      <?rfc include='reference.RFC.7657'?>
+
       <?rfc include='reference.I-D.ietf-rtcweb-overview'?>
 
-      <?rfc include='reference.I-D.ietf-dart-dscp-rtp'?>
+      <?rfc ?>
     </references>
 
     <section title="Change log">
@@ -650,6 +655,15 @@
 
             <t>Changed the names of the four priority levels to conform to
             other specs.</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -11 to -12">
+        <t><list style="symbols">
+            <t>Added a SHOULD NOT about using deprecated temporary IPv6
+            addresses.</t>
+
+            <t>Updated draft-ietf-dart-dscp-rtp reference to RFC 7657</t>
           </list></t>
       </section>
     </section>
