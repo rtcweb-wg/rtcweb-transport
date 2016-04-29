@@ -199,7 +199,7 @@
         supported.</t>
 
         <t>The WebRTC implementation MAY support accessing the Internet
-        through an HTTP proxy. If it does so, it MUST support the "ALPN"
+        through an HTTP proxy. If it does so, it MUST include the "ALPN"
         header as specified in <xref target="RFC7639"/>, and proxy
         authentication as described in Section 4.3.6 of <xref
         target="RFC7231"/> and <xref target="RFC7235"/> MUST also be
@@ -666,6 +666,15 @@
             <t>Updated draft-ietf-dart-dscp-rtp reference to RFC 7657</t>
           </list></t>
       </section>
+
+         <section title="Changes from -12 to -13">
+        <t><list style="symbols">
+            <t>Clarify that the ALPN header needs to be sent. </t>
+
+          </list></t>
+         </section>
+
+         
     </section>
   </back>
 </rfc>
