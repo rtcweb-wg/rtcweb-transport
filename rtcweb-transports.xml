@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-12"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-13"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="21" month="March" year="2016"/>
+    <date day="6" month="June" year="2016"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -274,9 +274,9 @@
 
         <t>When an WebRTC implementation has packets to send on multiple
         streams that are congestion-controlled under the same congestion
-        controller, the WebRTC implementation SHOULD cause data to be emitted
-        in such a way that each stream at each level of priority is being
-        given approximately twice the transmission capacity (measured in
+        control regime, the WebRTC implementation SHOULD cause data to be
+        emitted in such a way that each stream at each level of priority is
+        being given approximately twice the transmission capacity (measured in
         payload bytes) of the level below.</t>
 
         <t>Thus, when congestion occurs, a "high" priority flow will have the
@@ -351,8 +351,9 @@
         <t>All packets on one TCP connection, no matter what it carries, MUST
         use a single DSCP code point.</t>
 
-        <t>More advice on the use of DSCP code points with RTP is given in
-        <xref target="RFC7657"/>.</t>
+        <t>More advice on the use of DSCP code points with RTP and on the
+        relationship between DSCP and congestion control is given in <xref
+        target="RFC7657"/>.</t>
 
         <t>There exist a number of schemes for achieving quality of service
         that do not depend solely on DSCP code points. Some of these schemes
@@ -667,14 +668,13 @@
           </list></t>
       </section>
 
-         <section title="Changes from -12 to -13">
+      <section title="Changes from -12 to -13">
         <t><list style="symbols">
-            <t>Clarify that the ALPN header needs to be sent. </t>
+            <t>Clarify that the ALPN header needs to be sent.</t>
 
+            <t>Mentioned that RFC 7657 also talks about congestion control</t>
           </list></t>
-         </section>
-
-         
+      </section>
     </section>
   </back>
 </rfc>
