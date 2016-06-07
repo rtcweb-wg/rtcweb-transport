@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-13"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-14"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="6" month="June" year="2016"/>
+    <date day="7" month="June" year="2016"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -255,6 +255,10 @@
       streams". This specification does not describe prioritization between
       the RTP streams that come from a single "media source".</t>
 
+      <t>All media flows in WebRTC are assumed to be interactive, as defined
+      in <xref target="RFC4594"/>; there is no browser API support for
+      indicating whether media is interactive or non-interactive.</t>
+
       <t>A "data flow" is the outgoing data on a single WebRTC data
       channel.</t>
 
@@ -482,6 +486,8 @@
     </references>
 
     <references title="Informative References">
+      <?rfc include='reference.RFC.4594'?>
+
       <?rfc include='reference.RFC.5128'?>
 
       <?rfc include='reference.RFC.5014'?>
@@ -673,6 +679,13 @@
             <t>Clarify that the ALPN header needs to be sent.</t>
 
             <t>Mentioned that RFC 7657 also talks about congestion control</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -13 to -14">
+        <t><list style="symbols">
+            <t>Add note about non-support for marking flows as interactive or
+            non-interactive.</t>
           </list></t>
       </section>
     </section>
