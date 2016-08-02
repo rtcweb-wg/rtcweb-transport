@@ -81,7 +81,7 @@
             most protocol elements described.</t>
 
             <t>TCP <xref target="RFC0793"/>. This is used for HTTP/WebSockets,
-            as well as for TURN/SSL and ICE-TCP.</t>
+            as well as for TURN/TLS and ICE-TCP.</t>
           </list></t>
 
         <t>For both protocols, IPv4 and IPv6 support is assumed.</t>
@@ -99,6 +99,26 @@
 
         <t>This specification does not assume that the implementation will
         have access to ICMP or raw IP.</t>
+
+        <t>The following protocols may be used, but can be implemented by a
+        WebRTC endpoint, and are therefore not defined as "system-provided
+        interfaces":</t>
+
+        <t><list style="symbols">
+            <t>TURN - Traversal Using Relays Around NAT, <xref
+            target="RFC5766"/></t>
+
+            <t>STUN - Session Traversal Utilities for NAT, <xref
+            target="RFC5389"/></t>
+
+            <t>ICE - Interactive Connectivity Establishment, <xref
+            target="RFC5245"/> </t>
+
+            <t>TLS - Trasnsport Layer Security, <xref target="RFC5246"/></t>
+
+            <t>DTLS - Datagram Transport Layer Security, <xref
+            target="RFC6347"/>.</t>
+          </list></t>
       </section>
 
       <section title="Ability to use IPv4 and IPv6">
@@ -442,6 +462,8 @@
 
       <?rfc include='reference.RFC.5245'?>
 
+      <?rfc include='reference.RFC.5246'?>
+
       <?rfc include='reference.RFC.5389'?>
 
       <?rfc include='reference.RFC.5764'?>
@@ -451,6 +473,8 @@
       <?rfc include='reference.RFC.6062'?>
 
       <?rfc include='reference.RFC.6156'?>
+
+      <?rfc include='reference.RFC.6347'?>
 
       <?rfc include='reference.RFC.6544'?>
 
