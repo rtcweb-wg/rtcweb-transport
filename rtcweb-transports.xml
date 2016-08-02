@@ -233,7 +233,8 @@
 
         <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
         over the same port pair, as described in the DTLS-SRTP specification
-        <xref target="RFC5764"/>, section 5.1.2. All application layer
+        <xref target="RFC5764"/>, section 5.1.2, with clarifications in <xref
+        target="I-D.ietf-avtcore-rfc5764-mux-fixes"/>. All application layer
         protocol payloads over this DTLS connection are SCTP packets.</t>
 
         <t>Protocol identification MUST be supplied as part of the DTLS
@@ -483,6 +484,8 @@
       <?rfc include='reference.I-D.martinsen-mmusic-ice-dualstack-fairness'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-alpn'?>
+
+      <?rfc include='reference.I-D.ietf-avtcore-rfc5764-mux-fixes'?>
     </references>
 
     <references title="Informative References">
