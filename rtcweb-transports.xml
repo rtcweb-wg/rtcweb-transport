@@ -127,7 +127,8 @@
         the ICE scope. This is therefore clarified as follows:</t>
 
         <t>When a client gathers all IPv6 addresses on a host, and both
-        temporary addresses and permanent addresses of the same scope are
+        non-deprecated temporary addresses and permanent addresses of the
+        same scope are
         present, the client SHOULD discard the permanent addresses before
         exposing addresses to the application or using them in ICE. This is
         consistent with the default policy described in <xref
