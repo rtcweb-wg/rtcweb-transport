@@ -344,6 +344,18 @@
         of packets with certain DSCP markings. The detection of these
         conditions is implementation dependent.</t>
 
+        <t>A particularly hard problem is when one media transport uses
+        multiple DSCP code points, where one may be blocked and another may be
+        allowed. This is allowed for video in <xref
+        target="I-D.ietf-tsvwg-rtcweb-qos"/>. Implementations need to diagnose
+        this scenario; one possible implementation is to send initial ICE
+        probes with DSCP 0, and send ICE probes on all the DSCP code points
+        that are intended to be used once a candidate pair has been selected.
+        If one or more of the DSCP-marked probes fail, the sender will switch
+        the transport to using DSCP 0. This can be carried out simultaneously
+        with the initial media traffic; on failure, the initial data may need
+        to be resent.</t>
+
         <t>All packets carrying data from the SCTP association supporting the
         data channels MUST use a single DSCP code point. The code point used
         SHOULD be that recommended by <xref
@@ -389,10 +401,10 @@
         configurations:</t>
 
         <t><list style="symbols">
-            <t>multiplex all media and data on a single 5-tuple (fully
+            <t>Multiplex all media and data on a single 5-tuple (fully
             bundled)</t>
 
-            <t>send each media stream on its own 5-tuple and data on its own
+            <t>Send each media stream on its own 5-tuple and data on its own
             5-tuple (fully unbundled)</t>
           </list>It MAY choose to support other configurations, such as
         bundling each media type (audio, video or data) into its own 5-tuple
