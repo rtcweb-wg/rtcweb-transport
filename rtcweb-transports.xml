@@ -109,7 +109,7 @@
         MUST be able to communicate.</t>
 
         <t>When TURN is used, and the TURN server has IPv4 or IPv6
-        connectivity to the peer or its TURN server, candidates of the
+        connectivity to the peer or the peer's TURN server, candidates of the
         appropriate types MUST be supported. The "Happy Eyeballs"
         specification for ICE <xref
         target="I-D.ietf-mmusic-ice-dualstack-fairness"/> SHOULD be
