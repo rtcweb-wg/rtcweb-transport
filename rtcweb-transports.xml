@@ -112,7 +112,7 @@
             target="RFC5389"/></t>
 
             <t>ICE - Interactive Connectivity Establishment, <xref
-            target="RFC5245"/> </t>
+            target="RFC5245"/></t>
 
             <t>TLS - Trasnsport Layer Security, <xref target="RFC5246"/></t>
 
@@ -201,9 +201,9 @@
         establishing UDP relay candidates using TURN over TCP to connect to
         their respective relay servers.</t>
 
-        <t>Third, using TCP between the client's TURN server and the peer
-	may result in more performance problems than using UDP, e.g. due
-        to head of line blocking.</t>
+        <t>Third, using TCP between the client's TURN server and the peer may
+        result in more performance problems than using UDP, e.g. due to head
+        of line blocking.</t>
 
         <t>ICE-TCP candidates <xref target="RFC6544"/> MUST be supported; this
         may allow applications to communicate to peers with public IP
@@ -420,7 +420,8 @@
         bundling each media type (audio, video or data) into its own 5-tuple
         (bundling by media type).</t>
 
-        <t>Sending data over multiple 5-tuples is not supported.</t>
+        <t>Sending data channel data over multiple 5-tuples is not
+        supported.</t>
 
         <t>A receiving implementation MUST be able to receive media and data
         in all these configurations.</t>
@@ -437,8 +438,9 @@
     <section anchor="Security" title="Security Considerations">
       <t>RTCWEB security considerations are enumerated in <xref
       target="I-D.ietf-rtcweb-security"/>.</t>
-      <t>Security considerations pertaining to the use of DSCP are
-      enumerated in <xref target="I-D.ietf-tsvwg-rtcweb-qos"/>.</t>
+
+      <t>Security considerations pertaining to the use of DSCP are enumerated
+      in <xref target="I-D.ietf-tsvwg-rtcweb-qos"/>.</t>
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
