@@ -123,19 +123,23 @@
         is a change from the rules specified by <xref target="RFC3484"/>. For
         applications that select a single address, this is usually done by the
         IPV6_PREFER_SRC_TMP preference flag specified in <xref
-        target="RFC5014"/>. However, this rule is not completely obvious in
-        the ICE scope. This is therefore clarified as follows:</t>
+        target="RFC5014"/>. However, this rule, which iis intended to ensure
+        that privacy-enhanced addresses are used in preference to static
+        addresses, doesn't have the right effect in ICE, where all addresses
+        are gathered and therefore revealed to the application. Therefore, the
+        following rule is applied instead:</t>
 
         <t>When a client gathers all IPv6 addresses on a host, and both
-        non-deprecated temporary addresses and permanent addresses of the
-        same scope are
-        present, the client SHOULD discard the permanent addresses before
-        exposing addresses to the application or using them in ICE. This is
-        consistent with the default policy described in <xref
+        non-deprecated temporary addresses and permanent addresses of the same
+        scope are present, the client SHOULD discard the permanent addresses
+        before exposing addresses to the application or using them in ICE.
+        This is consistent with the default policy described in <xref
         target="RFC6724"/>.</t>
 
         <t>If some of the temporary IPv6 addresses, but not all, are marked
-        deprecated, the client SHOULD discard the deprecated addresses.</t>
+        deprecated, the client SHOULD discard the deprecated addresses. In an
+        ICE restart, deprecated addresses that are currently in use MAY be
+        retained.</t>
       </section>
 
       <section anchor="s-middlebox" title="Middle box related functions">
