@@ -211,8 +211,9 @@
         server.</t>
 
         <t>If TCP connections are used, RTP framing according to <xref
-        target="RFC4571"/> MUST be used, both for the RTP packets and for the
-        DTLS packets used to carry data channels.</t>
+        target="RFC4571"/> MUST be used for all packets. This includes the RTP
+        packets, DTLS packets used to carry data channels, and STUN
+        connectivity check packets.</t>
 
         <t>The ALTERNATE-SERVER mechanism specified in <xref
         target="RFC5389"/> (STUN) section 11 (300 Try Alternate) MUST be
