@@ -109,10 +109,10 @@
         MUST be able to communicate.</t>
 
         <t>When TURN is used, and the TURN server has IPv4 or IPv6
-        connectivity to the peer or its TURN server, candidates of the
+        connectivity to the peer or the peer's TURN server, candidates of the
         appropriate types MUST be supported. The "Happy Eyeballs"
         specification for ICE <xref
-        target="I-D.martinsen-mmusic-ice-dualstack-fairness"/> SHOULD be
+        target="I-D.ietf-mmusic-ice-dualstack-fairness"/> SHOULD be
         supported.</t>
       </section>
 
@@ -181,8 +181,8 @@
         establishing UDP relay candidates using TURN over TCP to connect to
         their respective relay servers.</t>
 
-        <t>Third, using TCP only between the endpoint and its relay may result
-        in less issues with TCP in regards to real-time constraints, e.g. due
+        <t>Third, using TCP between the client's TURN server and the peer
+	may result in more performance problems than using UDP, e.g. due
         to head of line blocking.</t>
 
         <t>ICE-TCP candidates <xref target="RFC6544"/> MUST be supported; this
@@ -413,8 +413,10 @@
     </section>
 
     <section anchor="Security" title="Security Considerations">
-      <t>Security considerations are enumerated in <xref
+      <t>RTCWEB security considerations are enumerated in <xref
       target="I-D.ietf-rtcweb-security"/>.</t>
+      <t>Security considerations pertaining to the use of DSCP are
+      enumerated in <xref target="I-D.ietf-tsvwg-rtcweb-qos"/>.</t>
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
@@ -480,7 +482,7 @@
 
       <?rfc include='reference.I-D.ietf-tsvwg-sctp-ndata'?>
 
-      <?rfc include='reference.I-D.martinsen-mmusic-ice-dualstack-fairness'?>
+      <?rfc include='reference.I-D.ietf-mmusic-ice-dualstack-fairness'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-alpn'?>
     </references>
