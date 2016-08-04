@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-14"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-15"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="7" month="June" year="2016"/>
+    <date day="4" month="August" year="2016"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -114,7 +114,7 @@
             <t>ICE - Interactive Connectivity Establishment, <xref
             target="RFC5245"/></t>
 
-            <t>TLS - Trasnsport Layer Security, <xref target="RFC5246"/></t>
+            <t>TLS - Transport Layer Security, <xref target="RFC5246"/></t>
 
             <t>DTLS - Datagram Transport Layer Security, <xref
             target="RFC6347"/>.</t>
@@ -143,7 +143,7 @@
         is a change from the rules specified by <xref target="RFC3484"/>. For
         applications that select a single address, this is usually done by the
         IPV6_PREFER_SRC_TMP preference flag specified in <xref
-        target="RFC5014"/>. However, this rule, which iis intended to ensure
+        target="RFC5014"/>. However, this rule, which is intended to ensure
         that privacy-enhanced addresses are used in preference to static
         addresses, doesn't have the right effect in ICE, where all addresses
         are gathered and therefore revealed to the application. Therefore, the
@@ -747,6 +747,20 @@
         <t><list style="symbols">
             <t>Add note about non-support for marking flows as interactive or
             non-interactive.</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -14 to -15">
+        <t><list style="symbols">
+            <t>Various text clarifications based on comments in Last Call and
+            IESG review</t>
+
+            <t>Clarified that only non-deprecated IPv6 addresses are used</t>
+
+            <t>Described handling of downgrading of DSCP markings when
+            blackholes are detected</t>
+
+            <t>Expanded acronyms in a new protocol list</t>
           </list></t>
       </section>
     </section>
