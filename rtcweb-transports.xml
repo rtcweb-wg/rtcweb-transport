@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-15"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-16"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="4" month="August" year="2016"/>
+    <date day="4" month="October" year="2016"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -39,7 +39,7 @@
 
       <t>WebRTC is described in the WebRTC overview document, <xref
       target="I-D.ietf-rtcweb-overview"/>, which also defines terminology used
-      in this document, including the terms "WebRTC device" and "WebRTC
+      in this document, including the terms "WebRTC endpoint" and "WebRTC
       browser".</t>
 
       <t>Terminology for RTP sources is taken from<xref target="RFC7656"/>
@@ -56,8 +56,8 @@
       target="I-D.ietf-rtcweb-security-arch"/>.</t>
 
       <t>This document describes requirements that apply to all WebRTC
-      devices. When there are requirements that apply only to WebRTC browsers,
-      this is called out explicitly.</t>
+      endpoints. When there are requirements that apply only to WebRTC
+      browsers, this is called out explicitly.</t>
     </section>
 
     <section title="Requirements language">
@@ -95,7 +95,7 @@
         changed, since this is a local configuration issue.</t>
 
         <t>Platforms that do not give access to these interfaces will not be
-        able to support a conforming WebRTC implementation.</t>
+        able to support a conforming WebRTC endpoint.</t>
 
         <t>This specification does not assume that the implementation will
         have access to ICMP or raw IP.</t>
@@ -149,16 +149,17 @@
         are gathered and therefore revealed to the application. Therefore, the
         following rule is applied instead:</t>
 
-        <t>When a client gathers all IPv6 addresses on a host, and both
-        non-deprecated temporary addresses and permanent addresses of the same
-        scope are present, the client SHOULD discard the permanent addresses
-        before exposing addresses to the application or using them in ICE.
-        This is consistent with the default policy described in <xref
-        target="RFC6724"/>.</t>
+        <t>When a WebRTC endpoint gathers all IPv6 addresses on its host, and
+        both non-deprecated temporary addresses and permanent addresses of the
+        same scope are present, the WebRTC endpoint SHOULD discard the
+        permanent addresses before exposing addresses to the application or
+        using them in ICE. This is consistent with the default policy
+        described in <xref target="RFC6724"/>.</t>
 
         <t>If some of the temporary IPv6 addresses, but not all, are marked
-        deprecated, the client SHOULD discard the deprecated addresses. In an
-        ICE restart, deprecated addresses that are currently in use MAY be
+        deprecated, the WebRTC endpoint SHOULD discard the deprecated
+        addresses, unless they are used by an ongoing connection. In an ICE
+        restart, deprecated addresses that are currently in use MAY be
         retained.</t>
       </section>
 
@@ -181,19 +182,24 @@
         <t>WebRTC browsers MUST support configuration of STUN and TURN
         servers, both from browser configuration and from an application.</t>
 
+        <t>Note that there is other work around STUN and TURN sever discovery
+        and management, including <xref
+        target="I-D.ietf-tram-turn-server-discovery"/> for server discovery,
+        as well as <xref target="I-D.ietf-rtcweb-return"/>.</t>
+
         <t>In order to deal with firewalls that block all UDP traffic, the
-        mode of TURN that uses TCP between the client and the server MUST be
-        supported, and the mode of TURN that uses TLS over TCP between the
-        client and the server MUST be supported. See <xref target="RFC5766"/>
-        section 2.1 for details.</t>
+        mode of TURN that uses TCP between the WebRTC endpoint and the TURN
+        server MUST be supported, and the mode of TURN that uses TLS over TCP
+        between the WebRTC endpoint and the TURN server MUST be supported. See
+        <xref target="RFC5766"/> section 2.1 for details.</t>
 
         <t>In order to deal with situations where one party is on an IPv4
         network and the other party is on an IPv6 network, TURN extensions for
         IPv6 <xref target="RFC6156"/> MUST be supported.</t>
 
-        <t>TURN TCP candidates, where the connection from the client's TURN
-        server to the peer is a TCP connection, <xref target="RFC6062"/> MAY
-        be supported.</t>
+        <t>TURN TCP candidates, where the connection from the WebRTC
+        endpoint's TURN server to the peer is a TCP connection, <xref
+        target="RFC6062"/> MAY be supported.</t>
 
         <t>However, such candidates are not seen as providing any significant
         benefit, for the following reasons.</t>
@@ -206,9 +212,9 @@
         establishing UDP relay candidates using TURN over TCP to connect to
         their respective relay servers.</t>
 
-        <t>Third, using TCP between the client's TURN server and the peer may
-        result in more performance problems than using UDP, e.g. due to head
-        of line blocking.</t>
+        <t>Third, using TCP between the WebRTC endpoint's TURN server and the
+        peer may result in more performance problems than using UDP, e.g. due
+        to head of line blocking.</t>
 
         <t>ICE-TCP candidates <xref target="RFC6544"/> MUST be supported; this
         may allow applications to communicate to peers with public IP
@@ -224,25 +230,28 @@
         target="RFC5389"/> (STUN) section 11 (300 Try Alternate) MUST be
         supported.</t>
 
-        <t>The WebRTC implementation MAY support accessing the Internet
-        through an HTTP proxy. If it does so, it MUST include the "ALPN"
-        header as specified in <xref target="RFC7639"/>, and proxy
-        authentication as described in Section 4.3.6 of <xref
-        target="RFC7231"/> and <xref target="RFC7235"/> MUST also be
-        supported.</t>
+        <t>The WebRTC endpoint MAY support accessing the Internet through an
+        HTTP proxy. If it does so, it MUST include the "ALPN" header as
+        specified in <xref target="RFC7639"/>, and proxy authentication as
+        described in Section 4.3.6 of <xref target="RFC7231"/> and <xref
+        target="RFC7235"/> MUST also be supported.</t>
       </section>
 
       <section title="Transport protocols implemented">
         <t>For transport of media, secure RTP is used. The details of the
         profile of RTP used are described in "RTP Usage" <xref
-        target="I-D.ietf-rtcweb-rtp-usage"/>. Key exchange MUST be done using
-        DTLS-SRTP, as described in <xref
+        target="I-D.ietf-rtcweb-rtp-usage"/>, which mandates the use of a
+        circuit breaker <xref target="I-D.ietf-avtcore-rtp-circuit-breakers"/>
+        and congstion control (see <xref
+        target="I-D.ietf-rmcat-cc-requirements"/> for further guidance).</t>
+
+        <t>Key exchange MUST be done using DTLS-SRTP, as described in <xref
         target="I-D.ietf-rtcweb-security-arch"/>.</t>
 
         <t>For data transport over the WebRTC data channel <xref
-        target="I-D.ietf-rtcweb-data-channel"/>, WebRTC implementations MUST
-        support SCTP over DTLS over ICE. This encapsulation is specified in
-        <xref target="I-D.ietf-tsvwg-sctp-dtls-encaps"/>. Negotiation of this
+        target="I-D.ietf-rtcweb-data-channel"/>, WebRTC endpoints MUST support
+        SCTP over DTLS over ICE. This encapsulation is specified in <xref
+        target="I-D.ietf-tsvwg-sctp-dtls-encaps"/>. Negotiation of this
         transport in SDP is defined in <xref
         target="I-D.ietf-mmusic-sctp-sdp"/>. The SCTP extension for NDATA,
         <xref target="I-D.ietf-tsvwg-sctp-ndata"/>, MUST be supported.</t>
@@ -257,9 +266,9 @@
         same DTLS association. Thus, there will only be one DTLS handshake
         even if there are multiple valid candidate pairs.</t>
 
-        <t>WebRTC implementations MUST support multiplexing of DTLS and RTP
-        over the same port pair, as described in the DTLS-SRTP specification
-        <xref target="RFC5764"/>, section 5.1.2, with clarifications in <xref
+        <t>WebRTC endpoints MUST support multiplexing of DTLS and RTP over the
+        same port pair, as described in the DTLS-SRTP specification <xref
+        target="RFC5764"/>, section 5.1.2, with clarifications in <xref
         target="I-D.ietf-avtcore-rfc5764-mux-fixes"/>. All application layer
         protocol payloads over this DTLS connection are SCTP packets.</t>
 
@@ -270,8 +279,8 @@
 
     <section title="Media Prioritization">
       <t>The WebRTC prioritization model is that the application tells the
-      WebRTC implementation about the priority of media and data that is
-      controlled from the API.</t>
+      WebRTC endpoint about the priority of media and data that is controlled
+      from the API.</t>
 
       <t>In this context, a "flow" is used for the units that are given a
       specific priority through the WebRTC API.</t>
@@ -303,12 +312,12 @@
         the data about the individual packets, and can choose differing
         treatment based on the stream a packet belongs to.</t>
 
-        <t>When an WebRTC implementation has packets to send on multiple
-        streams that are congestion-controlled under the same congestion
-        control regime, the WebRTC implementation SHOULD cause data to be
-        emitted in such a way that each stream at each level of priority is
-        being given approximately twice the transmission capacity (measured in
-        payload bytes) of the level below.</t>
+        <t>When an WebRTC endpoint has packets to send on multiple streams
+        that are congestion-controlled under the same congestion control
+        regime, the WebRTC endpoint SHOULD cause data to be emitted in such a
+        way that each stream at each level of priority is being given
+        approximately twice the transmission capacity (measured in payload
+        bytes) of the level below.</t>
 
         <t>Thus, when congestion occurs, a "high" priority flow will have the
         ability to send 8 times as much data as a "very-low" priority flow if
@@ -351,6 +360,11 @@
         sending; it is more useful to, for instance, skip intermediate frames
         that have no dependencies on them in order to achieve a lower bitrate.
         For reliable data, queues are useful.</t>
+
+        <t>Note that this specification doesn't dictate when disparate streams
+        are to be "congestion controlled under the same congestion control
+        regime". The issue of coupling congestion controllers is explored
+        further in <xref target="I-D.ietf-rmcat-coupled-cc"/>.</t>
       </section>
 
       <section anchor="s-qos"
@@ -493,6 +507,8 @@
 
       <?rfc include='reference.RFC.4571'?>
 
+      <?rfc include='reference.RFC.4594'?>
+
       <?rfc include='reference.RFC.4941'?>
 
       <?rfc include='reference.RFC.5245'?>
@@ -521,6 +537,14 @@
 
       <?rfc include='reference.RFC.7639'?>
 
+      <?rfc include='reference.RFC.7656'?>
+
+      <?rfc include='reference.I-D.ietf-rtcweb-overview'?>
+
+      <?rfc include='reference.I-D.ietf-avtcore-rtp-circuit-breakers'?>
+
+      <?rfc include='reference.I-D.ietf-rmcat-cc-requirements'?>
+
       <?rfc include='reference.I-D.ietf-rtcweb-security'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-rtp-usage'?>
@@ -547,21 +571,19 @@
     </references>
 
     <references title="Informative References">
-      <?rfc include='reference.RFC.4594'?>
-
       <?rfc include='reference.RFC.5128'?>
 
       <?rfc include='reference.RFC.5014'?>
 
       <?rfc include='reference.RFC.3484'?>
 
-      <?rfc include='reference.RFC.7656'?>
-
       <?rfc include='reference.RFC.7657'?>
 
-      <?rfc include='reference.I-D.ietf-rtcweb-overview'?>
+      <?rfc include='reference.I-D.ietf-rmcat-coupled-cc'?>
 
-      <?rfc ?>
+      <?rfc include='reference.I-D.ietf-tram-turn-server-discovery'?>
+
+      <?rfc include='reference.I-D.ietf-rtcweb-return'?>
     </references>
 
     <section title="Change log">
@@ -761,6 +783,32 @@
             blackholes are detected</t>
 
             <t>Expanded acronyms in a new protocol list</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -15 to -16">
+        <t>These changes are done post IESG approval, and address IESG
+        comments and other late comments. Issue numbers refer to
+        https://github.com/rtcweb-wg/rtcweb-transport/issues.</t>
+
+        <t><list style="symbols">
+            <t>Moved RFC 4594, 7656 and -overview to normative (issue #28)</t>
+
+            <t>Changed the terms "client", "WebRTC implementation" and "WebRTC
+            device" to consistently be "WebRTC endpoint", as defined in
+            -overview. (issue #40)</t>
+
+            <t>Added a note mentioning TURN service discovery and RETURN
+            (issue #42)</t>
+
+            <t>Added a note mentioning that rtp-usage requires circut breaker
+            and congestion control (issue #43)</t>
+
+            <t>Added mention of the "don't discard temporary IPv6 addresses
+            that are in use" (issue #44)</t>
+
+            <t>Added a reference to draft-ietf-rmcat-coupled-cc (issue
+            #46)</t>
           </list></t>
       </section>
     </section>
