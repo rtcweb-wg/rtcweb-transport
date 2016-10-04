@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="30" month="September" year="2016"/>
+    <date day="4" month="October" year="2016"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -360,6 +360,11 @@
         sending; it is more useful to, for instance, skip intermediate frames
         that have no dependencies on them in order to achieve a lower bitrate.
         For reliable data, queues are useful.</t>
+
+        <t>Note that this specification doesn't dictate when disparate streams
+        are to be "congestion controlled under the same congestion control
+        regime". The issue of coupling congestion controllers is explored
+        further in <xref target="I-D.ietf-rmcat-coupled-cc"/>.</t>
       </section>
 
       <section anchor="s-qos"
@@ -574,7 +579,7 @@
 
       <?rfc include='reference.RFC.7657'?>
 
-      <?rfc ?>
+      <?rfc include='reference.I-D.ietf-rmcat-coupled-cc'?>
 
       <?rfc include='reference.I-D.ietf-tram-turn-server-discovery'?>
 
@@ -801,6 +806,9 @@
 
             <t>Added mention of the "don't discard temporary IPv6 addresses
             that are in use" (issue #44)</t>
+
+            <t>Added a reference to draft-ietf-rmcat-coupled-cc (issue
+            #46)</t>
           </list></t>
       </section>
     </section>
