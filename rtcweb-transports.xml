@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-rtcweb-transports-16"
+<rfc category="std" docName="draft-ietf-rtcweb-transports-17"
      ipr="trust200902">
   <front>
     <title abbrev="WebRTC Transports">Transports for WebRTC</title>
@@ -23,7 +23,7 @@
       </address>
     </author>
 
-    <date day="4" month="October" year="2016"/>
+    <date day="26" month="October" year="2016"/>
 
     <abstract>
       <t>This document describes the data transport protocols used by WebRTC,
@@ -112,7 +112,7 @@
             target="RFC5389"/></t>
 
             <t>ICE - Interactive Connectivity Establishment, <xref
-            target="RFC5245"/></t>
+            target="I-D.ietf-ice-rfc5245bis"/></t>
 
             <t>TLS - Transport Layer Security, <xref target="RFC5246"/></t>
 
@@ -169,9 +169,9 @@
         traffic from the inside, but only from the outside if it is in
         response to inside traffic (simple stateful firewalls).</t>
 
-        <t>ICE <xref target="RFC5245"/> MUST be supported. The implementation
-        MUST be a full ICE implementation, not ICE-Lite. A full ICE
-        implementation allows interworking with both ICE and ICE-Lite
+        <t>ICE <xref target="I-D.ietf-ice-rfc5245bis"/> MUST be supported. The
+        implementation MUST be a full ICE implementation, not ICE-Lite. A full
+        ICE implementation allows interworking with both ICE and ICE-Lite
         implementations when they are deployed appropriately.</t>
 
         <t>In order to deal with situations where both parties are behind NATs
@@ -261,10 +261,10 @@
 
         <t>Note: DTLS-SRTP as defined in <xref target="RFC5764"/> section
         6.7.1 defines the interaction between DTLS and ICE ( <xref
-        target="RFC5245"/>). The effect of this specification is that all ICE
-        candidate pairs associated with a single component are part of the
-        same DTLS association. Thus, there will only be one DTLS handshake
-        even if there are multiple valid candidate pairs.</t>
+        target="I-D.ietf-ice-rfc5245bis"/>). The effect of this specification
+        is that all ICE candidate pairs associated with a single component are
+        part of the same DTLS association. Thus, there will only be one DTLS
+        handshake even if there are multiple valid candidate pairs.</t>
 
         <t>WebRTC endpoints MUST support multiplexing of DTLS and RTP over the
         same port pair, as described in the DTLS-SRTP specification <xref
@@ -382,7 +382,8 @@
 
         <t>The implementation MAY turn off use of DSCP markings if it detects
         symptoms of unexpected behaviour like priority inversion or blocking
-        of packets with certain DSCP markings. The detection of these
+        of packets with certain DSCP markings. Some examples of such behaviors
+        are described in <xref target="ANRW16"/>. The detection of these
         conditions is implementation dependent.</t>
 
         <t>A particularly hard problem is when one media transport uses
@@ -511,8 +512,6 @@
 
       <?rfc include='reference.RFC.4941'?>
 
-      <?rfc include='reference.RFC.5245'?>
-
       <?rfc include='reference.RFC.5246'?>
 
       <?rfc include='reference.RFC.5389'?>
@@ -555,6 +554,8 @@
 
       <?rfc include='reference.I-D.ietf-rtcweb-security-arch'?>
 
+      <?rfc include='reference.I-D.ietf-ice-rfc5245bis'?>
+
       <?rfc include='reference.I-D.ietf-tsvwg-rtcweb-qos'?>
 
       <?rfc include='reference.I-D.ietf-tsvwg-sctp-dtls-encaps'?>
@@ -584,6 +585,24 @@
       <?rfc include='reference.I-D.ietf-tram-turn-server-discovery'?>
 
       <?rfc include='reference.I-D.ietf-rtcweb-return'?>
+
+      <reference anchor="ANRW16" target="">
+        <front>
+          <title>How to say that you're special: Can we use bits in the IPv4
+          header?</title>
+
+          <author fullname="R. Barik" initials="R." surname="Barik"/>
+
+          <author fullname="M. Welzl" initials="M." surname="Welzl"/>
+
+          <author fullname="A. Elmokashfi" initials="A." surname="Elmokashfi"/>
+
+          <date month="July" year="2016"/>
+        </front>
+
+        <seriesInfo name="ACM, IRTF, ISOC Applied Networking Research Workshop (ANRW 2016), Berlin"
+                    value=""/>
+      </reference>
     </references>
 
     <section title="Change log">
@@ -809,6 +828,16 @@
 
             <t>Added a reference to draft-ietf-rmcat-coupled-cc (issue
             #46)</t>
+          </list></t>
+      </section>
+
+      <section title="Changes from -16 to -17">
+        <t><list style="symbols">
+            <t>Added an informative reference to the "DSCP blackholing"
+            paper</t>
+
+            <t>Changed the reference for ICE from RFC 5245 to
+            draft-ietf-ice-rfc5245bis</t>
           </list></t>
       </section>
     </section>
