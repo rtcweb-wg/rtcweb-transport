@@ -279,11 +279,16 @@
 
     <section title="Media Prioritization">
       <t>The WebRTC prioritization model is that the application tells the
-      WebRTC endpoint about the priority of media and data that is controlled
-      from the API.</t>
+      WebRTC endpoint about two prioritiy settings 
+      for media and data that are controlled
+      from the API.  One priority setting controls packet send 
+      sequence decisions and the other controls controls packet markings. 
+      Each is described in its own section below, in which the value
+      given by the applaction for the respective priority setting is
+      referred to simply as the "priority".</t>
 
-      <t>In this context, a "flow" is used for the units that are given a
-      specific priority through the WebRTC API.</t>
+      <t>In this context, a "flow" is used for the units that are given
+      specific priority settings through the WebRTC API.</t>
 
       <t>For media, a "media flow", which can be an "audio flow" or a "video
       flow", is what <xref target="RFC7656"/> calls a "media source", which
@@ -298,13 +303,9 @@
       <t>A "data flow" is the outgoing data on a single WebRTC data
       channel.</t>
 
-      <t>The priority associated with a media flow or data flow is classified
+      <t>The priority settings associated with a media flow or data flow are classified
       as "very-low", "low", "medium or "high". There are only four priority
       levels at the API.</t>
-
-      <t>The priority settings affect two pieces of behavior: Packet send
-      sequence decisions and packet markings. Each is described in its own
-      section below.</t>
 
       <section title="Local prioritization">
         <t>Local prioritization is applied at the local node, before the
